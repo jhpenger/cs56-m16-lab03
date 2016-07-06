@@ -13,14 +13,21 @@ import static spark.Spark.get;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
+//importing jscience and related
+import static javax.measure.unit.SI.KILOGRAM;
+import javax.measure.quantity.Mass;
+import org.jscience.physics.model.RelativisticModel;
+import org.jscience.physics.amount.Amount;
+
 public class Main {
 
   public static void main(String[] args) {
 
     port(Integer.valueOf(System.getenv("PORT")));
     staticFileLocation("/public");
-
-    get("/ucsb", (req, res) -> "Go Gauchos");
+	
+    get("/hello", (req, res) -> "Hello World");
+    get("/ucsb", (req, res) -> "Go Gaucho");
 
     get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
